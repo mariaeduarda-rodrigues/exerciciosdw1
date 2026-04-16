@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> dogão da dudinha</title>
+   
+</head>
+
+<link rel="stylesheet" href="dogao.css">
+
+<body>
+    <div class="container">
+        <h1>🌭 DOGÃO da Dudinha </h1>
+        
+        <form id="pedidoForm">
+            <!-- Seção de Cachorros Quentes -->
+            <div class="section">
+                <h2>Quantidades por tipo de Dogão:</h2>
+
+                <div class="option">
+                    <div class="option-text">
+                        <span>Cachorro Quente Tradicional</span>
+                        <span class="price">R$ 20,00</span>
+                    </div>
+                    <input type="number" id="qtyTrad" name="qtyTrad" value="0" min="0" step="1" class="item-quantity" aria-label="Quantidade Tradicional">
+                </div>
+
+                <div class="option">
+                    <div class="option-text">
+                        <span>Cachorro Quente Especial</span>
+                        <span class="price">R$ 25,00</span>
+                    </div>
+                    <input type="number" id="qtyEsp" name="qtyEsp" value="0" min="0" step="1" class="item-quantity" aria-label="Quantidade Especial">
+                </div>
+            </div>
+
+            <!-- Seção de Refrigerantes -->
+            <div class="section">
+                <h2>Quantidades de Refrigerantes:</h2>
+                
+                <div class="option">
+                    <div class="option-text">
+                        <span>Refrigerante 500 ml</span>
+                        <span class="price">R$ 5,00</span>
+                    </div>
+                    <input type="number" id="qtyRef500" name="qtyRef500" value="0" min="0" step="1" class="item-quantity" aria-label="Quantidade Refrigerante 500 ml">
+                </div>
+
+                <div class="option">
+                    <div class="option-text">
+                        <span>Refrigerante 1L</span>
+                        <span class="price">R$ 12,00</span>
+                    </div>
+                    <input type="number" id="qtyRef1l" name="qtyRef1l" value="0" min="0" step="1" class="item-quantity" aria-label="Quantidade Refrigerante 1L">
+                </div>
+            </div>
+
+            <button type="button" onclick="calcularPreco()">Calcular Preço</button>
+
+            <div class="erro" id="erro"></div>
+
+            <!-- Resultado -->
+            <div class="resultado" id="resultado">
+                <h3>📋 Resumo do Pedido</h3>
+                <div id="resumo"></div>
+                <div class="valor-total">Total: R$ <span id="total">0,00</span></div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function calcularPreco() {
+            const erroDiv = document.getElementById('erro');
+            const resultadoDiv = document.getElementById('resultado');
+            const resumoDiv = document.getElementById('resumo');
+            const totalSpan = document.getElementById('total');
+            const qtdTrad = parseInt(document.getElementById('qtyTrad').value, 10) || 0;
+            const qtdEsp = parseInt(document.getElementById('qtyEsp').value, 10) || 0;
+            const qtdRef500 = parseInt(document.getElementById('qtyRef500').value, 10) || 0;
+            const qtdRef1l = parseInt(document.getElementById('qtyRef1l').value, 10) || 0;
+            const precoTrad = 20;
+            const precoEsp = 25;
+            const precoRef500 = 5;
+            const precoRef1l = 12;
+
+            erroDiv.classList.remove('mostrar');
+            erroDiv.textContent = '';
+
+            if (qtdTrad === 0 && qtdEsp === 0 && qtdRef500 === 0 && qtdRef1l === 0) {
+                erroDiv.textContent = '⚠️ Por favor, informe pelo menos um item no pedido!';
+                erroDiv.classList.add('mostrar');
+                resultadoDiv.classList.remove('mostrar');
+                return;
+            }
+
+            let total = 0;
+            let resumoHTML = '';
+
+            if (qtdTrad > 0) {
+                const subtotalTrad = precoTrad * qtdTrad;
+                resumoHTML += `<p><strong>Cachorro Quente Tradicional:</strong> ${qtdTrad} unidade(s) x R$ ${precoTrad.toFixed(2)} = R$ ${subtotalTrad.toFixed(2)}</p>`;
+                total += subtotalTrad;
+            }
+
+            if (qtdEsp > 0) {
+                const subtotalEsp = precoEsp * qtdEsp;
+                resumoHTML += `<p><strong>Cachorro Quente Especial:</strong> ${qtdEsp} unidade(s) x R$ ${precoEsp.toFixed(2)} = R$ ${subtotalEsp.toFixed(2)}</p>`;
+                total += subtotalEsp;
+            }
+
+            if (qtdRef500 > 0 || qtdRef1l > 0) {
+                resumoHTML += '<p><strong>Refrigerantes:</strong></p>';
+                if (qtdRef500 > 0) {
+                    const subtotalRef500 = precoRef500 * qtdRef500;
+                    resumoHTML += `<p style="margin-left: 20px;">• Refrigerante 500 ml: ${qtdRef500} unidade(s) x R$ ${precoRef500.toFixed(2)} = R$ ${subtotalRef500.toFixed(2)}</p>`;
+                    total += subtotalRef500;
+                }
+                if (qtdRef1l > 0) {
+                    const subtotalRef1l = precoRef1l * qtdRef1l;
+                    resumoHTML += `<p style="margin-left: 20px;">• Refrigerante 1L: ${qtdRef1l} unidade(s) x R$ ${precoRef1l.toFixed(2)} = R$ ${subtotalRef1l.toFixed(2)}</p>`;
+                    total += subtotalRef1l;
+                }
+            } else {
+                resumoHTML += '<p style="color: #999; font-style: italic;">Sem refrigerante</p>';
+            }
+
+            resumoDiv.innerHTML = resumoHTML;
+            totalSpan.textContent = total.toFixed(2);
+            resultadoDiv.classList.add('mostrar');
+        }
+
+        document.getElementById('pedidoForm').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                calcularPreco();
+            }
+        });
+    </script>
+</body>
+</html>

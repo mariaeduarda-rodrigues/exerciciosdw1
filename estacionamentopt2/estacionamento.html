@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estacionamento</title>
+
+    <link rel="stylesheet" href="estacionamento2.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>🚗 Estacionamento</h1>
+
+        <div class="campo">
+            <label>Data e hora de entrada</label>
+            <input type="datetime-local" id="inputEntrada">
+        </div>
+
+        <div class="campo">
+            <label>Data e hora de saída</label>
+            <input type="datetime-local" id="inputSaida">
+        </div>
+
+        <div>
+            <input type="checkbox" id="inputTipo">
+            <label for="inputTipo">Carro grande</label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="inputCliente">
+            <label for="inputCliente">Cliente frequente</label>
+        </div>
+
+        <button onclick="calcular()">Calcular Tarifa</button>
+
+        <div id="resultado">O valor total é R$ 0,00</div>
+
+    </div>
+
+    <script src="./estacionamento.js"></script>
+    
+
+</body>
+</html>

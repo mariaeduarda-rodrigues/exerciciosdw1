@@ -1,0 +1,58 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(135deg, #ffd6e7, #ffc0cb);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 320px;
+    margin: auto;
+    background: #fff0f5;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(255, 182, 193, 0.5);
+}
+
+.container * {
+    display: block;
+    margin-bottom: 12px;
+}
+
+h1 {
+    text-align: center;
+    color: #d63384;
+}
+
+input[type="datetime-local"] {
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid #ffb6c1;
+}
+
+input[type="checkbox"] {
+    display: inline;
+}
+
+label {
+    display: inline;
+    color: #c2185b;
+}
+
+button {
+    padding: 10px;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+#resultado {
+    text-align: center;
+    background: #ffe4ec;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #c2185b;
+}
