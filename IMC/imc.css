@@ -1,0 +1,173 @@
+/* Definição da paleta de cores */
+:root {
+    --primary-pink: #ff4f81;        /* Rosa principal */
+    --pink-light: #ffe4ec;          /* Fundo suave */
+    --pink-pastel: #ffc1d3;         /* Destaques leves */
+    --pink-strong: #c9184a;         /* Rosa mais escuro */
+    
+    --white: #FFFFFF;
+    --bg-color: #fff0f5;            /* Fundo geral rosinha */
+    --text-dark: #333333;
+
+    --error-bg: red;                /* Mantido (requisito) */
+    --error-text: white;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    background: linear-gradient(135deg, var(--pink-pastel), var(--primary-pink));
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem 1rem;
+    flex: 1;
+}
+
+/* Cartões */
+.calculator-card,
+.result-section,
+.table-section {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border-top: 4px solid var(--primary-pink);
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 0 3px rgba(255, 79, 129, 0.2);
+}
+
+button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-pink);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: var(--pink-strong);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Erro */
+.error-message {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+/* Resultados */
+h2 {
+    color: var(--primary-pink);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.result-section p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+th,
+td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+th {
+    background-color: var(--pink-light);
+}
+
+/* Linha destacada */
+tr.highlight {
+    background-color: var(--pink-pastel);
+    font-weight: bold;
+    border-left: 4px solid var(--primary-pink);
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--white);
+    color: #777;
+    border-top: 1px solid #eee;
+}
